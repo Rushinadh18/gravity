@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Solo Leveling | System Quests</title>
+    <!-- Modern Font: Inter and Orbitron for numbers -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header class="system-header">
+            <h1 class="glow-text title">SYSTEM QUESTS</h1>
+            <div class="header-stats">
+                <span>PLAYER: <span class="highlight">SUNG JIN-WOO</span></span>
+                <span>LEVEL: <span id="player-level" class="highlight">1</span></span>
+                <button id="toggle-notes-btn" class="system-btn primary">NOTES</button>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <section class="quests-section panel" style="grid-column: 1 / -1;">
+                <header class="panel-header">
+                    <h2>ACTIVE QUESTS</h2>
+                    <button id="add-quest-btn" class="system-btn primary">NEW QUEST</button>
+                </header>
+                <div id="quest-list" class="quest-list">
+                    <!-- Quests will be rendered here -->
+                </div>
+            </section>
+
+            <section class="stopwatch-section panel" style="grid-column: 1 / -1;">
+                <h2>SYSTEM TIMER</h2>
+                <div class="stopwatch-display glow-text highlight" id="stopwatch-time">00:00:00</div>
+                <div class="stopwatch-controls">
+                    <button id="sw-start-btn" class="system-btn primary">START</button>
+                    <button id="sw-pause-btn" class="system-btn secondary">PAUSE</button>
+                    <button id="sw-reset-btn" class="system-btn secondary">RESET</button>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Notes Sidebar -->
+        <aside id="notes-sidebar" class="notes-sidebar hidden">
+            <header class="panel-header">
+                <h2>SYSTEM NOTES</h2>
+                <div style="display:flex; gap: 10px;">
+                    <button id="add-note-btn" class="system-btn primary">NEW</button>
+                    <button id="close-notes-btn" class="system-btn secondary">✕</button>
+                </div>
+            </header>
+            <div id="note-list" class="note-list">
+                <!-- Notes will be rendered here -->
+            </div>
+        </aside>
+        
+        <!-- Modals for Input -->
+        <div id="quest-modal" class="modal hidden">
+            <div class="modal-content system-window">
+                <h3>[ SYSTEM PROMPT ]</h3>
+                <p>Assign a new quest.</p>
+                <input type="text" id="quest-title-input" placeholder="Quest Title (e.g., Daily Preparation)">
+                <select id="quest-type-input" style="width: 100%; padding: 0.8rem; margin: 1rem 0; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); color: var(--text-main); font-family: 'Inter', sans-serif; border-radius: 4px;">
+                    <option value="daily">Daily Task (+1 LVL)</option>
+                    <option value="weekly">Weekly Task (+5 LVL)</option>
+                    <option value="monthly">Monthly Task (+10 LVL)</option>
+                </select>
+                <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
+                    <div style="flex: 1;">
+                        <label for="quest-start-date-input" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Orbitron', sans-serif;">START DATE</label>
+                        <input type="datetime-local" id="quest-start-date-input" style="margin: 0.2rem 0;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="quest-end-date-input" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Orbitron', sans-serif;">END DATE</label>
+                        <input type="datetime-local" id="quest-end-date-input" style="margin: 0.2rem 0;">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="save-quest-btn" class="system-btn primary">ACCEPT</button>
+                    <button id="cancel-quest-btn" class="system-btn secondary">DECLINE</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="note-modal" class="modal hidden">
+            <div class="modal-content system-window">
+                <h3>[ SYSTEM PROMPT ]</h3>
+                <p>Record a new observation or upload media data.</p>
+                <input type="text" id="note-title-input" placeholder="Note Title">
+                <textarea id="note-body-input" placeholder="Write your notes here..."></textarea>
+                <input type="file" id="note-file-input" accept="image/*,application/pdf,.doc,.docx,.txt" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); color: var(--text-main); font-family: 'Inter', sans-serif; border-radius: 4px;">
+                <div class="modal-actions">
+                    <button id="save-note-btn" class="system-btn primary">SAVE</button>
+                    <button id="cancel-note-btn" class="system-btn secondary">CANCEL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Notification Alert -->
+        <div id="system-notification" class="notification hidden">
+            <div class="notification-body">
+                <div class="notification-icon">!</div>
+                <div class="notification-text">
+                    <h4>WARNING</h4>
+                    <p id="notification-message">A quest deadline is approaching.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
