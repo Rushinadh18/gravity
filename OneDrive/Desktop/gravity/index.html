@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Solo Leveling | System Quests</title>
     <!-- Modern Font: Inter and Orbitron for numbers -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -30,10 +32,10 @@
                 </div>
             </section>
 
-            <section class="stopwatch-section panel" style="grid-column: 1 / -1; display:flex; justify-content:space-between; align-items:center;">
+            <section class="stopwatch-section panel" style="grid-column: 1 / -1;">
                 <h2>SYSTEM TIMER</h2>
-                <div class="stopwatch-display glow-text highlight" style="font-size: 1.5rem;" id="stopwatch-time">00:00:00</div>
-                <div class="stopwatch-controls" style="display:flex; gap:10px;">
+                <div class="stopwatch-display glow-text highlight" id="stopwatch-time">00:00:00</div>
+                <div class="stopwatch-controls">
                     <button id="sw-start-btn" class="system-btn primary">START</button>
                     <button id="sw-pause-btn" class="system-btn secondary">PAUSE</button>
                     <button id="sw-reset-btn" class="system-btn secondary">RESET</button>

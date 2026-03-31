@@ -409,3 +409,97 @@ h1, h2, h3, h4 {
 .notification-text p {
     font-size: 0.9rem;
 }
+
+/* Mobile App Scale & Responsive Adjustments */
+@media (max-width: 600px) {
+    #app {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .system-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .header-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .header-stats > span {
+        display: block;
+    }
+
+    .header-stats > button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .panel {
+        padding: 1rem;
+    }
+
+    .stopwatch-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .stopwatch-controls {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .stopwatch-controls button {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .system-window {
+        width: 95%;
+        padding: 1.2rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-actions button {
+        width: 100%;
+    }
+
+    .quest-item, .note-item {
+        padding: 0.8rem;
+    }
+
+    .item-actions {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+        opacity: 1; /* Always show actions on mobile */
+    }
+
+    .quest-title {
+        font-size: 1rem;
+    }
+
+    .quest-meta {
+        font-size: 0.75rem;
+    }
+}

@@ -148,8 +148,15 @@ function renderQuests() {
         if (a.completed === b.completed) {
             const aEnd = a.endDate || a.deadline;
             const bEnd = b.endDate || b.deadline;
+            
+            // If neither have a deadline, sort by creation date
+            if (!aEnd && !bEnd) {
+                return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+            }
+            // Put quests without deadlines at the bottom
             if (!aEnd) return 1;
             if (!bEnd) return -1;
+            
             return new Date(aEnd) - new Date(bEnd);
         }
         return a.completed ? 1 : -1;
@@ -163,7 +170,7 @@ function renderQuests() {
         const endD = quest.endDate || quest.deadline;
         
         if (quest.startDate && endD) {
-            metaText = `START: ${new Date(quest.startDate).toLocaleString()} | END: ${new Date(endD).toLocaleString()}`;
+            metaText = `START: ${new Date(quest.startDate).toLocaleString()}<br>END: ${new Date(endD).toLocaleString()}`;
         } else if (endD) {
             metaText = `DEADLINE: ${new Date(endD).toLocaleString()}`;
         } else if (quest.startDate) {
@@ -171,7 +178,7 @@ function renderQuests() {
         }
         
         if (quest.failed) {
-            metaText = `<span style="color: var(--warning-red)">FAILED</span>`;
+            metaText = `<span style="color: var(--warning-red)">[FAILED]</span> ` + (metaText !== 'NO DEADLINE' ? metaText : '');
         }
 
         item.innerHTML = `
